@@ -1,5 +1,6 @@
 package com.project.PollingWebApp.POJO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -14,8 +15,9 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name="User", uniqueConstraints = @UniqueConstraint(columnNames = {"username","email"}))
-public class User {
+@JsonIgnoreProperties(value = "password",ignoreUnknown = true)
+@Table(name="Users", uniqueConstraints = @UniqueConstraint(columnNames = {"username","email"}))
+public class User extends DateAudit {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
