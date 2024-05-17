@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="Roles")
-public class Role extends DateAudit {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
